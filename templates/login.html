@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+        <div class="login-container">
+            <form method="POST" action="{{ url_for('routes.login') }}" novalidate id='login-form'>
+                <h1 class="login-title">Telegram Bot</h1>
+                <span style="color:red">{{ error_message }}</span>
+                <div id ="error-message" style="color: red;"></div>
+                <p><br> <input type="text" id="username" name="username" placeholder="username">
+                </p>
+                <p><br><input type="password" id="password" name="password" placeholder="password">
+                </p>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

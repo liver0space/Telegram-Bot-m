@@ -1,0 +1,39 @@
+services:
+  web:
+    container_name: "telegram_bot-web"
+    stop_signal: SIGINT
+    build:
+      context: .
+    command: python3 -m main
+    working_dir: "/usr/src/app/telegram_bot"
+    volumes:
+      - .:/usr/src/app/telegram_bot
+    restart: always
+    env_file:
+      - ".env"
+    ports:
+      - "5000:5000" 
+    depends_on:
+      - postgreDB
+  
+  postgreDB: 
+    container_name: "pg_database"
+    image: postgres:16 
+    ports:
+      - ":5432"
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: my_dbase
+    restart: always
+    env_file:
+      - ".env"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  
+
+volumes:
+  postgres_data: 
+
+
+
+

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+      <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+        <div class="home-container">
+          <h1 class="home-title">Telegram Bot</h1>
+          <p>Please Log In</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('routes.login') }}"
+              >Login</a>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+
